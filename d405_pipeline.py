@@ -150,7 +150,8 @@ class RealSenseD405(object):
         return self.req_data()
 
     def stop(self):
-        '''Stops subprocess for ethernet communication. Allows program to exit gracefully.
+        '''
+        Stops subprocess for ethernet communication. Allows program to exit gracefully.
         '''
         self._req_q.put("stop")
         self._pipeline.terminate()
