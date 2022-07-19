@@ -6,6 +6,7 @@ Install python library `pyrealsense2` and `numpy`
 
 ## Example
 1. Get depth image and color image
+![depth and color image](./depth_color.jpg)
 
 2. Get color point cloud
 
