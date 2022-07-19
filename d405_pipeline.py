@@ -163,7 +163,7 @@ class RealSenseD405(object):
 if __name__ == "__main__":
     import cv2
 
-    rs_pipe = RealSenseD405()
+    rs_pipe = RealSenseD405(toggle_new_process=True)
 
     while True:
         pcd, pcd_color, depth_img, color_img = rs_pipe.get_pcd_color_depth()
