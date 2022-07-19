@@ -11,6 +11,11 @@ import pyrealsense2 as rs
 
 VERSION = "0.0.1"
 PROCESS_SLEEP_TIME = .1
+# Read chapter 4 of datasheet for details
+DEPTH_RESOLUTION = (1280, 720)
+COLOR_RESOLUTION = (1280, 720)
+DEPTH_FPS = 30
+COLOR_FPS = 30
 
 
 class _DataPipeline(mp.Process):
@@ -30,8 +35,8 @@ class _DataPipeline(mp.Process):
         pipeline = rs.pipeline()
         config = rs.config()
         # Setup config
-        config.enable_stream(rs.stream.depth, rs.format.z16, 30)
-        config.enable_stream(rs.stream.color, rs.format.bgr8, 30)
+        config.enable_stream(rs.stream.depth, DEPTH_RESOLUTION[0], DEPTH_RESOLUTION[1], rs.format.z16, DEPTH_FPS)
+        config.enable_stream(rs.stream.color, COLOR_RESOLUTION[0], COLOR_RESOLUTION[1], rs.format.bgr8, COLOR_FPS)
 
         # Start streaming with chosen configuration
         pipeline.start(config)
