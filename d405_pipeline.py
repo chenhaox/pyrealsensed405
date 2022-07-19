@@ -20,7 +20,7 @@ COLOR_FPS = 30
 
 def stream_data(pipe: rs.pipeline, pc: rs.pointcloud):
     """
-    Stream data for RealSense D405
+    Stream data for RealSense D504
     """
     # Acquire a frame
     frames = pipe.wait_for_frames()
@@ -50,7 +50,8 @@ class _DataPipeline(mp.Process):
     The process to stream data through Realsense API
     """
 
-    def __init__(self, req_q: mp.Queue, res_q: mp.Queue):
+    def __init__(self, req_q: mp.Queue,
+                 res_q: mp.Queue, ):
         mp.Process.__init__(self)
         # Require queue and receive queue to exchange data
         self._req_q = req_q
@@ -116,7 +117,7 @@ class RealSenseD405(object):
         else:
             return stream_data(pipe=self._pipeline, pc=self._pc)
 
-    def get_pcd(self, return_color: bool = False):
+    def get_pcd(self, return_color=False):
         """
         Get point cloud data. If return_color is True, additionally return pcd color
         :return: nx3 np.array
@@ -153,8 +154,11 @@ class RealSenseD405(object):
         '''
         Stops subprocess for ethernet communication. Allows program to exit gracefully.
         '''
-        self._req_q.put("stop")
-        self._pipeline.terminate()
+        if self._toogle_new_process:
+            self._req_q.put("stop")
+            self._pipeline.terminate()
+        else:
+            self._pipeline.stop()
 
     def __del__(self):
         self.stop()
