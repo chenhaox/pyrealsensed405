@@ -50,8 +50,7 @@ class _DataPipeline(mp.Process):
     The process to stream data through Realsense API
     """
 
-    def __init__(self, req_q: mp.Queue,
-                 res_q: mp.Queue, ):
+    def __init__(self, req_q: mp.Queue, res_q: mp.Queue):
         mp.Process.__init__(self)
         # Require queue and receive queue to exchange data
         self._req_q = req_q
@@ -117,7 +116,7 @@ class RealSenseD405(object):
         else:
             return stream_data(pipe=self._pipeline, pc=self._pc)
 
-    def get_pcd(self, return_color=False):
+    def get_pcd(self, return_color: bool = False):
         """
         Get point cloud data. If return_color is True, additionally return pcd color
         :return: nx3 np.array
