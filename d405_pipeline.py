@@ -20,7 +20,7 @@ COLOR_FPS = 30
 
 def stream_data(pipe: rs.pipeline, pc: rs.pointcloud):
     """
-    Stream data for RealSense D504
+    Stream data for RealSense D405
     """
     # Acquire a frame
     frames = pipe.wait_for_frames()
