@@ -9,6 +9,7 @@ Install python library `pyrealsense2` and `numpy`
 ![depth and color image](./depth_color.jpg)
 
 2. Get color point cloud
+![depth and color image](./point_cloud.jpg)
 
 ## Reference
 RealSense API: https://dev.intelrealsense.com/docs/python2
