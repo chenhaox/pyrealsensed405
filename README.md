@@ -27,7 +27,9 @@ cv2.waitKey(0)
 
 ![depth and color image](./depth_color.jpg)
 
-2. Get color point cloud
+2. Get color point cloud (Point cloud is plotted using [WRS Robot Simulator](https://github.com/wanweiwei07/wrs))
+
+```python
 ![depth and color image](./point_cloud.jpg)
 
 ## Reference
