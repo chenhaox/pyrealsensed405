@@ -1,5 +1,5 @@
 numpy
 pyrealsense2
 # alternatively, if you want to detect ArUco markers
-opencv-python
+opencv-python == 4.6.0.66
 opencv-contrib-python == 4.6.0.66 # this version is required for ArUco marker detection to work
